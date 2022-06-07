@@ -16,6 +16,7 @@ namespace ATM
 
             ATM atm = null;
             string card = ATM.EnterCard();
+            int pin = ATM.EnterPin();
 
             if (card == "card1")
             {
@@ -28,13 +29,16 @@ namespace ATM
                 atm = new ATM(client3);
             }
 
-            int pin = ATM.EnterPin();
-
             if (atm.LogIn(pin))
             {
-               ATM.ShowMenu();
+                ATM.ShowMenu();
+                int choice = Convert.ToInt32(Console.ReadLine());
+                if (choice == 1)
+                {
+                    atm.ChangePin();
+                    ATM.Return();
+                }
             }
-
 
             Console.ReadLine();
         }

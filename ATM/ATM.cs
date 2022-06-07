@@ -19,6 +19,7 @@ namespace ATM
         {
             if (c.Pin == pin)
             {
+                Console.Clear();
                 Console.WriteLine("Succesfully logged in!");
                 return true;
             }
@@ -37,16 +38,18 @@ namespace ATM
 
         public static int EnterPin()
         {
+            Console.WriteLine("Enter pin:");
             int pin = Convert.ToInt32(Console.ReadLine());
             return pin;
         }
 
         public void ChangePin()
         {
+            Console.Clear();
             Console.WriteLine("Type new pin: ");
             int newPin = Convert.ToInt32(Console.ReadLine());
             c.Pin = newPin;
-            Console.WriteLine(c.Pin);
+            Console.WriteLine("Pin changed succesfully.\nNew pin: " + c.Pin);
 
         }
         public void CashDeposit()
@@ -68,6 +71,19 @@ namespace ATM
         {
             Console.WriteLine("\n What do you want to do?\n 1 - Change pin\n " +
                 "2 - Cash deposit\n 3 - Cash withdrawal\n 4 - Display balance");
+        }
+        public static void Return()
+        {
+            Console.WriteLine("Return to main menu? (y/n)");
+            string answer = Console.ReadLine();
+            if (answer == "y")
+            {
+                ShowMenu();
+            }
+            else
+            {
+                Console.ReadLine();
+            }
         }
     }
 }
