@@ -35,9 +35,10 @@ namespace ATM
             return card;
         }
 
-        public void EnterPin()
+        public static int EnterPin()
         {
-
+            int pin = Convert.ToInt32(Console.ReadLine());
+            return pin;
         }
 
         public void ChangePin()
