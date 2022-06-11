@@ -28,16 +28,34 @@ namespace ATM
             {
                 atm = new ATM(client3);
             }
-
+            bool appWorks = false;
             if (atm.LogIn(pin))
             {
-                ATM.ShowMenu();
-                int choice = Convert.ToInt32(Console.ReadLine());
-                if (choice == 1)
+                do
                 {
-                    atm.ChangePin();
-                    ATM.Return();
-                }
+                    ATM.ShowMenu();
+                    int choice = Convert.ToInt32(Console.ReadLine());
+                    if (choice == 1)
+                    {
+                        atm.ChangePin();
+                        appWorks = ATM.Return();
+                    }
+                    else if (choice == 2)
+                    {
+                        atm.CashDeposit();
+                        appWorks = ATM.Return();
+                    }
+                    else if (choice == 3)
+                    {
+                        atm.CashWithrawal();
+                        appWorks = ATM.Return();
+                    }
+                    else if (choice == 4)
+                    {
+                        atm.DisplayBalance();
+                        appWorks = ATM.Return();
+                    }
+                } while (appWorks == true);
             }
 
             Console.ReadLine();

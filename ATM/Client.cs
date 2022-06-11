@@ -34,7 +34,7 @@ namespace ATM
         public double Balance
         {
             get { return balance; }
-            set { }
+            set { balance = value; }
         }
     }
 }

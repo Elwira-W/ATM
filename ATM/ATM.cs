@@ -54,17 +54,64 @@ namespace ATM
         }
         public void CashDeposit()
         {
+            Console.WriteLine("Enter amount you wish to deposit: ");
+            string amount; 
+            bool check = true;
+            do
+            {
+                amount = Console.ReadLine();
+                if (!Int32.TryParse(amount, out int result))
+                {
+                    Console.WriteLine("Enter correct amount.");
+                    check = false;
+                }
+                else
+                {
+                    check = true;
+                }
 
+            } while (check == false);
+            c.Balance += Convert.ToDouble(amount);
+            Console.WriteLine("Cash deposited successfully.");
         }
 
         public void CashWithrawal()
         {
+            Console.WriteLine("Enter amount you wish to withdraw");
+            string amount;
+            bool check = true;
+            do
+            {
+                amount = Console.ReadLine();
+                if (!Int32.TryParse(amount, out int result))
+                {
+                    Console.WriteLine("Enter correct amount.");
+                    check = false;
+                }
+                else
+                {
+                    if (Convert.ToDouble(amount) <= c.Balance)
+                    {
+                        check = true;
+                        Console.WriteLine("Cash wihdrawal complete.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You do not have enough money on your bank account." +
+                            "\nEnter correct value.");
+                        check = false;
+                    }
+                }
 
+            } while (check == false);
+            c.Balance -= Convert.ToDouble(amount);
+            
         }
 
         public void DisplayBalance()
         {
-
+            Console.Clear();
+            Console.WriteLine("Current account balance: " + c.Balance);
         }
 
         public static void ShowMenu()
@@ -72,17 +119,18 @@ namespace ATM
             Console.WriteLine("\n What do you want to do?\n 1 - Change pin\n " +
                 "2 - Cash deposit\n 3 - Cash withdrawal\n 4 - Display balance");
         }
-        public static void Return()
+        public static bool Return()
         {
             Console.WriteLine("Return to main menu? (y/n)");
             string answer = Console.ReadLine();
             if (answer == "y")
             {
-                ShowMenu();
+                Console.Clear();
+                return true;
             }
             else
             {
-                Console.ReadLine();
+                return false;
             }
         }
     }
