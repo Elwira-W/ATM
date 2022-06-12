@@ -15,8 +15,9 @@ namespace ATM
             c = client;
         }
 
-        public bool LogIn (int pin)
+        public bool LogIn(int pin)
         {
+
             if (c.Pin == pin)
             {
                 Console.Clear();
@@ -25,7 +26,8 @@ namespace ATM
             }
             else
             {
-                Console.WriteLine("Error!");
+                Console.Clear();
+                Console.WriteLine("Wrong pin!");
                 return false;
             }
         }
@@ -55,7 +57,7 @@ namespace ATM
         public void CashDeposit()
         {
             Console.WriteLine("Enter amount you wish to deposit: ");
-            string amount; 
+            string amount;
             bool check = true;
             do
             {
@@ -105,7 +107,7 @@ namespace ATM
 
             } while (check == false);
             c.Balance -= Convert.ToDouble(amount);
-            
+
         }
 
         public void DisplayBalance()
