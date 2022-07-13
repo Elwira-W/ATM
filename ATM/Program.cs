@@ -10,12 +10,12 @@ namespace ATM
     {
         static void Main(string[] args)
         {
+            Random number = new Random();
+            Client client1 = new Client("card1", 1111, number.Next());
+            Client client2 = new Client("card2", 2222, number.Next());
+            Client client3 = new Client("card3", 3333, number.Next());
 
-            Client client1 = new Client("card1", 1111, 1111.1);
-            Client client2 = new Client("card2", 2222, 2222.2);
-            Client client3 = new Client("card3", 3333, 3333.3);
-            //Console.WriteLine(client1.Balance + " " + client2.Balance + " " + client3.Balance);
-
+            #region
             ATM atm = null;
             string card = ATM.EnterCard();
             int pin, loginTry = 0;
@@ -72,6 +72,7 @@ namespace ATM
                     appWorks = ATM.Return();
                 }
             }
+            #endregion
             Console.ReadLine();
         }
     }
